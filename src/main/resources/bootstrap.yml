@@ -1,0 +1,78 @@
+management: 
+  endpoint: 
+    metrics: 
+      enabled: true
+    prometheus: 
+      enabled: true
+  endpoints: 
+    web: 
+      exposure: 
+        include: "*"
+  metrics: 
+    export: 
+      prometheus: 
+        enabled: true
+spring: 
+  application: 
+    name: Nachsalpayextaccounts
+  cloud: 
+    config: 
+      failFast: false
+      retry: 
+        maxAttempts: 20
+      uri: ${CONFIG_SERVER_URI}
+  profiles: 
+    active: ${PROFILE:dev}
+  sleuth: 
+    sampler: 
+      percentage: 1
+  api: 
+    achoperations: 
+      context-path: /ACHOperations/{achoperationsId}/Retrieve
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: achoperations295190-jolt.json
+    corporatecurrentaccount: 
+      context-path: /CorporateCurrentAccount/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: corporatecurrentaccount534839-jolt.json
+    corporatepayrollservices: 
+      context-path: /CorporatePayrollServices/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: corporatepayrollservices831938-jolt.json
+    correspondence: 
+      context-path: /Correspondence/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: correspondence937574-jolt.json
+    correspondentbankoperations: 
+      context-path: /CorrespondentBankOperations/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: correspondentbankoperations519563-jolt.json
+    financialgateway: 
+      context-path: /FinancialGateway/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: financialgateway305954-jolt.json
+    internalbankacc: 
+      context-path: /InternalBankAccount/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: internalbankacc829253-jolt.json
+    paymentexecution: 
+      context-path: /PaymentExecution/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: paymentexecution341502-jolt.json
+    paymetorder: 
+      context-path: /PaymentOrder/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: paymetorder847707-jolt.json
+    positionkeeping: 
+      context-path: /PositionKeeping/Initiate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: positionkeeping378106-jolt.json
+    regulatorycompliance: 
+      context-path: /RegulatoryCompliance/Evaluate
+      hosturl: v1/bian-3/core/payment/achoperations/10.0.0/
+      jolt-filename: regulatorycompliance107132-jolt.json
+  datasource: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${mysql_pwd}
+    url: jdbc:mysql://${mysql_url}:3306/camunda
+    username: ${mysql_user}
